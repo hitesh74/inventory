@@ -1,0 +1,201 @@
+<div ng-controller="CreateInvoiceCtrl as createInvoiceCtrl">
+
+
+	<div class="row wrapper border-bottom white-bg page-heading page-heading-parent">
+
+		<!-- Page Header -->
+		<div class="col-sm-4">
+			<h2>Invoice</h2>
+			<ol class="breadcrumb">
+				<li>
+					<a ui-sref="{{ createInvoiceCtrl.commonService.STATE_HOME_VIEW }}">Home</a>
+				</li>
+				<li class="active">
+					<strong>Invoice</strong>
+				</li>
+			</ol>
+		</div>
+		<!-- Page Header -->
+
+		<!-- Sub menu items -->
+		<div class="page-heading-buttons">
+			<!-- Sub menu items for large devices -->
+			<div class="btn-group1 pull-right">
+
+				<button class="btn btn-primary btn-sm" ng-click="createInvoiceCtrl.save()" ng-disabled="createInvoiceCtrl.invoice.invoiceNumber.length > 0">
+					<i class="inventory fa fa-save"></i> Save
+				</button>
+
+				<button class="btn btn-primary btn-sm" ng-print print-element-id="printThisElement">
+					<i class="inventory fa fa-save"></i> Print
+				</button>
+
+			</div>
+
+		</div>
+		<!-- !!Sub menu items -->
+
+	</div>
+
+	<!-- Content -->
+	<div class="row">
+
+		<div>
+			<div class="col-lg-12">
+				<div class="wrapper wrapper-content animated fadeInRight">
+					<div id="printThisElement" class="ibox-content p-xl">
+
+						<div class="row">
+							<div class="col-xs-6 text-left">
+								<h5>
+									<span class="text-navy">{{ createInvoiceCtrl.invoice.invoiceNumber }}</span>
+								</h5>
+							</div>
+
+							<div class="col-xs-6 text-right">
+								<h5 class="text-success">{{ createInvoiceCtrl.invoice.invoiceDate | date }}</h5>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-6">
+								<h5 class="text-muted">
+									<u>From:</u>
+								</h5>
+								<address>
+									<strong>{{ createInvoiceCtrl.commonService.user.companyName }}</strong>
+									<br>
+									{{ createInvoiceCtrl.commonService.user.companyAddress }}
+									<br>
+									{{ createInvoiceCtrl.commonService.user.companyCity }}, {{ createInvoiceCtrl.commonService.user.companyCountry }} - {{
+									createInvoiceCtrl.commonService.user.companyPin }}
+									<br>
+									<span> 9929335632</span>
+								</address>
+							</div>
+
+							<div class="col-xs-6 text-right">
+								<h5 class="text-right text-muted">
+									<u>To:</u>
+								</h5>
+								<address>
+									<strong> <input type="text" placeholder="Buyer name" style="width: 100%; border: none; text-align: right;" value=""
+										ng-model="createInvoiceCtrl.invoice.customerName">
+									</strong>
+									<br>
+									<input type="text" placeholder="Address" style="width: 100%; border: none; text-align: right;" value=""
+										ng-model="createInvoiceCtrl.invoice.customerAddress">
+									<br>
+									<input type="text" placeholder="City, Country" style="width: 100%; border: none; text-align: right;" value=""
+										ng-model="createInvoiceCtrl.invoice.customerCityCountry">
+									<br>
+									<span>
+										<input type='text' placeholder="Phone" pattern='\d{10}' title='Phone Number' style="width: 100%; border: none; text-align: right;"
+											ng-model="createInvoiceCtrl.invoice.customerMobile">
+									</span>
+								</address>
+							</div>
+						</div>
+
+						<div class="table-responsive m-t">
+							<table class="table inv-invoice-table">
+								<thead>
+									<tr>
+										<th class="non-printable"></th>
+										<th>Item List</th>
+										<th>Quantity</th>
+										<th>Unit Price</th>
+										<th>Tax</th>
+										<th>Total Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-show="createInvoiceCtrl.items.length == 0">
+										<td colspan="6" class="non-printable" style="text-align: left">
+											<div>
+												<a ng-click="createInvoiceCtrl.addItem()" title="Add new item">
+													<span class="text-primary fa fa-plus-square"></span>
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr ng-repeat="item in createInvoiceCtrl.items">
+										<td class="non-printable">
+											<div>
+												<a ng-click="createInvoiceCtrl.removeItem(item)" title="Remove">
+													<span class="text-danger fa fa-close"></span>
+												</a>
+											</div>
+											<div ng-if="$last">
+												<a ng-click="createInvoiceCtrl.addItem()" title="Add new item">
+													<span class="text-primary fa fa-plus-square"></span>
+												</a>
+											</div>
+										</td>
+										<td>
+											<div class="input-group">
+												<!-- <ui-select ng-model="createInvoiceCtrl.person.selected" theme="bootstrap"> <ui-select-match>{{$select.selected.name}}</ui-select-match> <ui-select-choices
+												repeat="item in createInvoiceCtrl.people | filter: $select.search">
+											<div ng-bind-html="item.name | highlight: $select.search"></div>
+											<small ng-bind-html="item.email | highlight: $select.search"></small> </ui-select-choices> </ui-select> -->
+												<input type="text" ng-model="item.searchText" ng-blur="createInvoiceCtrl.searchItem(item)" autofocus="{{ item.autofocus || 'false'}}"
+													style="width: 100%; border: none;">
+												<!-- <select>
+												<option value="volvo">Volvo</option>
+												<option value="saab">Saab</option>
+												<option value="mercedes">Mercedes</option>
+												<option value="audi">Audi</option>
+											</select> -->
+											</div>
+											<small>{{ item.category }}</small>
+										</td>
+										<td>
+											<input type="number" ng-change="createInvoiceCtrl.changeQuantity(item)" ng-model="item.quantity" style="width: 100%; border: none;">
+										</td>
+										<td>{{ item.unitPrice | currency : 'INR ' : 2}}</td>
+										<td>{{ (item.unitPrice * item.quantity) * item.taxPercent / 100 | currency : 'INR ' : 2 }}</td>
+										<td>{{ (item.unitPrice * item.quantity) * (100 + item.taxPercent) / 100 | currency : 'INR ' : 2 }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- /table-responsive -->
+
+						<table class="table invoice-total">
+							<tbody>
+								<tr>
+									<td>
+										<strong>Sub Total :</strong>
+									</td>
+									<td>{{ createInvoiceCtrl.getSubTotal() | currency : 'INR ' : 2}}</td>
+								</tr>
+								<tr>
+									<td>
+										<strong>TAX :</strong>
+									</td>
+									<td>{{ createInvoiceCtrl.getTotalTax() | currency : 'INR ' : 2}}</td>
+								</tr>
+								<tr>
+									<td>
+										<strong>TOTAL :</strong>
+									</td>
+									<td>{{ createInvoiceCtrl.getTotal() | currency : 'INR ' : 2}}</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div class="well m-t">
+							<strong>Terms & Conditions</strong>
+							<ol type="1">
+								<li>Payment should be made within 15 days of purchase, thereafter interest of 24% PA will be applicable.</li>
+							</ol>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

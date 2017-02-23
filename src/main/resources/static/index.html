@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="inventory">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Page title set in pageTitle directive -->
+<title page-title></title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font awesome -->
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+<!-- Main Inventory CSS files -->
+<link href="css/animate.css" rel="stylesheet">
+<link id="loadBefore" href="css/style.css" rel="stylesheet">
+<link href="css/inventory.css" rel="stylesheet">
+
+<!-- Sweet alert -->
+<link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+<link href="css/plugins/sweetalert/custom-sweetalert.css" rel="stylesheet" />
+
+
+</head>
+
+<!-- ControllerAs syntax -->
+<!-- Main controller -->
+<body ng-controller="MainCtrl as main" class="{{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
+
+	<!-- Main view  -->
+	<div ui-view></div>
+
+	<!-- jQuery and Bootstrap -->
+	<script src="js/jquery/jquery-2.1.1.min.js"></script>
+	<script src="js/plugins/jquery-ui/jquery-ui.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+
+	<!-- MetsiMenu -->
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+	<!-- SlimScroll -->
+	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Peace JS -->
+	<script src="js/plugins/pace/pace.min.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js/inventory.js"></script>
+
+	<!-- Main Angular scripts-->
+	<script src="js/angular/angular.min.js"></script>
+	<script src="js/angular/angular-sanitize.js"></script>
+	<script src="js/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+	<script src="js/ui-router/angular-ui-router.min.js"></script>
+	<script src="js/bootstrap/ui-bootstrap-tpls-1.1.2.min.js"></script>
+	<script src="js/plugins/angular-idle/angular-idle.js"></script>
+
+	<!-- Anglar App Script -->
+	<script src="js/app.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/directives.js"></script>
+	<script src="js/controllers.js"></script>
+
+	<!-- Invoice -->
+	<script src='invoice/invoice-service.js'></script>
+	<script src='invoice/invoice-controller.js'></script>
+
+	<script src="component/common/broadcast-service.js"></script>
+
+	<!-- Items -->
+	<script src="item/item-service.js"></script>
+	<script src="item/item-controller.js"></script>
+
+	<script src="category/category-service.js"></script>
+	<script src="category/category-controller.js"></script>
+
+	<script src="product/product-service.js"></script>
+	<script src="product/product-controller.js"></script>
+
+	<script src="supplier/supplier-service.js"></script>
+	<script src="supplier/supplier-controller.js"></script>
+
+	<script src="user/profile-service.js"></script>
+	<script src="user/profile-controller.js"></script>
+
+	<script src="component/common/common-service.js"></script>
+
+	<script src="component/auth/auth-service.js"></script>
+	<script src="component/auth/auth-controller.js"></script>
+
+	<!-- Sweet alert -->
+	<script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="js/plugins/sweetalert/angular-sweetalert.min.js"></script>
+
+</body>
+</html>

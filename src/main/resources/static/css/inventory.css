@@ -1,0 +1,133 @@
+/* Colorful action items */
+a.cadetblue {
+	color: cadetblue;
+}
+
+a.cadetblue:hover {
+	color: darkseagreen;
+}
+
+a.logout {
+	/* color: cadetblue !important; */
+	color: #1ab394 !important;
+    font-weight: 700 !important;
+}
+
+a.logout:hover {
+	color: darkseagreen !important;
+}
+
+/* INVOICE */
+table.table.inv-invoice-table tbody > tr > td:last-child,
+table.table.inv-invoice-table tbody > tr > td:nth-child(5),
+table.table.inv-invoice-table tbody > tr > td:nth-child(4)
+{
+  text-align: right;
+}
+table.table.inv-invoice-table thead > tr > th:last-child,
+table.table.inv-invoice-table thead > tr > th:nth-child(5),
+table.table.inv-invoice-table thead > tr > th:nth-child(4) 
+{
+  text-align: right;
+}
+ 
+@media screen {
+    #printSection {
+        display: none;
+    }
+}
+
+@media print {
+    body * {
+        visibility:hidden;
+    }
+    #printSection, #printSection * {
+        visibility:visible;
+    }
+    #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+    }
+    .non-printable {
+      display: none;
+    }
+}
+
+ul.pagination {
+	float: right !important;
+    margin-top: -10px !important;	
+}
+
+.table-summary {
+	    padding-top: 8px;
+    white-space: nowrap;
+}
+
+
+.login-logo {
+	color: #e6e6e6;
+    font-size: 120px;
+    font-weight: 800;
+    letter-spacing: -10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+
+/* Heading at top of pages */
+.page-heading-parent {
+	position: relative;
+}
+
+.page-heading-buttons {
+	position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+
+.inventory.fa-plus-square {
+	color: #337ab7 !important;
+}
+
+.metismenu.nav > li > a i {
+		margin-right: 2px;
+	    min-width: 20px;
+}
+
+.nav > li > a i {
+    margin-right: 2px;
+}
+
+/* Error message spans in forms */
+.err-msg {
+	color: red;
+	font-size: small;
+}
+
+input.ng-invalid.ng-touched {
+	border-color: red;
+}
+
+.ibox-title {
+    background-color: rgba(236, 236, 235, 0.79);
+    border-style: none;
+}
+
+.gray-bg {
+    background-color: rgba(246, 246, 246, 1);
+}
+
+.table-action-1 {
+	color: #901818;
+}
+
+.table-action-1:hover {
+	color: blue;
+}
+
+
+/* .wrapper-content {
+    padding: 10px 10px 20px 10px;
+} */

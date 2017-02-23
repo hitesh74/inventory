@@ -1,0 +1,28 @@
+<div>
+	<h5 class="login-logo">NextGen Invoice</h5>
+</div>
+<div class="middle-box text-center loginscreen  animated fadeInDown" ng-controller="LoginCtrl as loginCtrl">
+	<div>
+		<div class="text-danger">{{ loginCtrl.errMsg }}</div>
+		<h3>Welcome to NextGen Invoice</h3>
+		<p>Complete Solution to generate high standard invoices for your business and manage your inventory</p>
+		<p>Login in. To see it in action.</p>
+		<form class="m-t" role="form" ng-submit="loginCtrl.login()">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Username" required="" ng-model="loginCtrl.creds.username">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" placeholder="Password" required="" ng-model="loginCtrl.creds.password">
+			</div>
+			<button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+			<p class="text-muted text-center">
+				<small>Do not have an account?</small>
+				<a>Apply Now</a>
+			</p>
+		</form>
+		<p class="m-t">
+			<small>NextGen Invoice &copy; 2017</small>
+		</p>
+	</div>
+</div>

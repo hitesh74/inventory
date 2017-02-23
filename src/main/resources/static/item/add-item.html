@@ -1,0 +1,131 @@
+<div ng-controller="CreateItemCtrl as createItemCtrl">
+
+	<div class="row wrapper border-bottom white-bg page-heading page-heading-parent">
+		<div class="col-sm-4">
+			<h2>Items</h2>
+			<ol class="breadcrumb">
+				<li>
+					<a ui-sref="{{ createItemCtrl.commonService.STATE_HOME_VIEW }}">Home</a>
+				</li>
+				<li class="active">
+					<strong>Items</strong>
+				</li>
+			</ol>
+		</div>
+
+		<!-- Sub menu items -->
+		<div class="page-heading-buttons"></div>
+		<!-- !!Sub menu items -->
+	</div>
+
+	<div class="wrapper wrapper-content animated fadeInRight">
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class=" ibox float-e-margins">
+
+					<div class="ibox-title">
+						<h5>Add Item</h5>
+					</div>
+
+					<div class="ibox-content">
+
+						<form class="form-horizontal" name="createItemReqForm" id="createItemReqForm" data-ng-submit="createItemCtrl.createItem()">
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Product</label>
+								<div class="col-lg-10">
+									<ui-select ng-model="createItemCtrl.item.productDto" theme="bootstrap"> <ui-select-match placeholder="Select or search a product">{{$select.selected.name}}</ui-select-match>
+									<ui-select-choices repeat="product in createItemCtrl.products | filter: $select.search">
+									<div ng-bind-html="product.name | highlight: $select.search"></div>
+									</ui-select-choices> </ui-select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Supplier</label>
+								<div class="col-lg-10">
+									<ui-select ng-model="createItemCtrl.item.supplierDto" theme="bootstrap"> <ui-select-match placeholder="Select or search a supplier">{{$select.selected.name}}</ui-select-match>
+									<ui-select-choices repeat="supplier in createItemCtrl.suppliers | filter: $select.search">
+									<div ng-bind-html="supplier.name | highlight: $select.search"></div>
+									</ui-select-choices> </ui-select>
+								</div>
+							</div>
+
+
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Bar Code</label>
+								<div class="col-lg-10">
+									<input id="barCode" name="barCode" type="text" placeholder="Bar Code" class="form-control" ng-model="createItemCtrl.item.barCode" required>
+									<span class="pull-right err-msg" data-ng-show="createItemReqForm.barCode.$touched && createItemReqForm.barCode.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Unit MRP</label>
+								<div class="col-lg-10">
+									<input id="mrp" name="mrp" type="number" step="0.01" placeholder="Unit MRP" class="form-control" ng-model="createItemCtrl.item.unitMRP" required>
+									<span class="pull-right err-msg" data-ng-show="createItemReqForm.mrp.$touched && createItemReqForm.mrp.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Unit SP</label>
+								<div class="col-lg-10">
+									<input id="sp" name="sp" type="number" step="0.01" placeholder="Unit SP" class="form-control" ng-model="createItemCtrl.item.unitSP" required>
+									<span class="pull-right err-msg" data-ng-show="createItemReqForm.sp.$touched && createItemReqForm.sp.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Expiry Date</label>
+								<div class="col-lg-10">
+									<div class="input-group date">
+										<input type="datetime" class="form-control" date-time ng-model="createItemCtrl.item.expiryDate" view="date" auto-close="true" min-view="date"
+											format="YYYY-MM-DD" required>
+										<span class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Units Purchased</label>
+								<div class="col-lg-10">
+									<input id="purchased" name="purchased" type="number" placeholder="Units Purchased" class="form-control" ng-model="createItemCtrl.item.unitsPurchased"
+										required>
+									<span class="pull-right err-msg" data-ng-show="createItemReqForm.purchased.$touched && createItemReqForm.purchased.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">% of tax</label>
+								<div class="col-lg-10">
+									<input id="tax" name="tax" type="number" step="0.01" placeholder="% of tax" class="form-control" ng-model="createItemCtrl.item.taxPercent" required>
+									<span class="pull-right err-msg" data-ng-show="createItemReqForm.tax.$touched && createItemReqForm.tax.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-lg-12">
+									<div class="pull-right">
+
+										<input type="button" name="reset" id="reset" value="Reset" class="btn btn-default"
+											data-ng-click="createItemCtrl.reset(createItemReqForm)" data-ng-disabled="createItemReqForm.$pristine" />
+										<input type="submit" name="submit" id="submit" value="Save" class="btn btn-primary" />
+
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>

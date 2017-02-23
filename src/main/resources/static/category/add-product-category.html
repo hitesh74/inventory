@@ -1,0 +1,67 @@
+<div ng-controller="CreateCategoryCtrl as createCategoryCtrl">
+
+	<div class="row wrapper border-bottom white-bg page-heading page-heading-parent">
+		<div class="col-sm-4">
+			<h2>Categories</h2>
+			<ol class="breadcrumb">
+				<li>
+					<a ui-sref="{{ createCategoryCtrl.commonService.STATE_HOME_VIEW }}">Home</a>
+				</li>
+				<li>
+					<a ui-sref="{{ createCategoryCtrl.commonService.STATE_CATEGORY_LANDING_VIEW }}">Categories</a>
+				</li>
+				<li class="active">
+					<strong>Add Category</strong>
+				</li>
+			</ol>
+		</div>
+
+		<!-- Sub menu items -->
+		<div class="page-heading-buttons"></div>
+		<!-- !!Sub menu items -->
+	</div>
+
+	<div class="wrapper wrapper-content animated fadeInRight">
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class=" ibox float-e-margins">
+
+					<div class="ibox-title">
+						<h5>Add Category</h5>
+					</div>
+
+					<div class="ibox-content">
+
+						<form class="form-horizontal" name="createCategoryReqForm" id="createCategoryReqForm" data-ng-submit="createCategoryCtrl.createCategory()">
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Name</label>
+								<div class="col-lg-10">
+									<input type="text" placeholder="Name" id="name" name="name" class="form-control" ng-model="createCategoryCtrl.category.name" required>
+									<span class="pull-right err-msg" data-ng-show="createCategoryReqForm.name.$touched && createCategoryReqForm.name.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-lg-12">
+									<div class="pull-right">
+
+										<input type="button" name="reset" id="reset" value="Reset" class="btn btn-default" data-ng-click="createCategoryCtrl.reset(createCategoryReqForm)"
+											data-ng-disabled="createCategoryReqForm.$pristine" />
+										<input type="submit" name="submit" id="submit" value="Save" class="btn btn-primary" required />
+
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>

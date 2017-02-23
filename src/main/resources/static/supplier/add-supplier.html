@@ -1,0 +1,88 @@
+<div ng-controller="CreateSupplierCtrl as createSupplierCtrl">
+
+	<div class="row wrapper border-bottom white-bg page-heading page-heading-parent">
+		<div class="col-sm-4">
+			<h2>Suppliers</h2>
+			<ol class="breadcrumb">
+				<li>
+					<a ui-sref="{{ createSupplierCtrl.commonService.STATE_HOME_VIEW }}">Home</a>
+				</li>
+				<li class="active">
+					<strong>Suppliers</strong>
+				</li>
+			</ol>
+		</div>
+
+		<!-- Sub menu items -->
+		<div class="page-heading-buttons">
+			<!-- Sub menu items for large devices -->
+			<div class="btn-group pull-right">
+				<a data-ui-sref="{{ createSupplierCtrl.commonService.STATE_ADD_SUPPLIER_VIEW }}" class="btn btn-default btn-sm">
+					<i class="inventory fa fa-plus-square"></i> Add Supplier
+				</a>
+			</div>
+
+		</div>
+		<!-- !!Sub menu items -->
+	</div>
+
+	<div class="wrapper wrapper-content animated fadeInRight">
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class=" ibox float-e-margins">
+
+					<div class="ibox-title">
+						<h5>Add Supplier</h5>
+					</div>
+
+					<div class="ibox-content">
+
+						<form class="form-horizontal" name="createSupplierReqForm" id="createSupplierReqForm" data-ng-submit="createSupplierCtrl.createSupplier()">
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Name</label>
+								<div class="col-lg-10">
+									<input type="text" placeholder="Name" id="name" name="name" class="form-control" ng-model="createSupplierCtrl.supplier.name" required>
+									<span class="pull-right err-msg" data-ng-show="createSupplierReqForm.name.$touched && createSupplierReqForm.name.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Email</label>
+								<div class="col-lg-10">
+									<input type="email" placeholder="Email" id="email" name="email" class="form-control" ng-model="createSupplierCtrl.supplier.email" required>
+									<span class="pull-right err-msg" data-ng-show="createSupplierReqForm.email.$touched && createSupplierReqForm.email.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-2 control-label">Mobile</label>
+								<div class="col-lg-10">
+									<input type="mobile" placeholder="Mobile" id="mobile" name="mobile" class="form-control" ng-model="createSupplierCtrl.supplier.mobile" required>
+									<span class="pull-right err-msg" data-ng-show="createSupplierReqForm.name.$touched && createSupplierReqForm.name.$invalid">*Required</span>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-lg-12">
+									<div class="pull-right">
+
+										<input type="button" name="reset" id="reset" value="Reset" class="btn btn-default"
+											data-ng-click="createSupplierCtrl.reset(createSupplierReqForm)" data-ng-disabled="createSupplierReqForm.$pristine" /> <input
+											type="submit" name="submit" id="submit" value="Save" class="btn btn-primary" />
+
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>

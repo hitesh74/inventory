@@ -1,0 +1,240 @@
+<div class="wrapper wrapper-content">
+
+	<div class="row">
+
+		<div class="col-lg-3">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<span class="label label-success pull-right">This month</span>
+					<h5>Stocks-In</h5>
+				</div>
+				<div class="ibox-content">
+					<h1 class="no-margins">₹ 40 886,200</h1>
+
+					<div class="stat-percent font-bold text-success">
+						TODO
+						<i class="fa fa-bolt"></i>
+					</div>
+					<small>TODO</small>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<span class="label label-info pull-right">This month</span>
+					<h5>Stocks-Out</h5>
+				</div>
+				<div class="ibox-content">
+					<h1 class="no-margins">₹ 275,800</h1>
+
+					<div class="stat-percent font-bold text-info">
+						TODO
+						<i class="fa fa-level-up"></i>
+					</div>
+					<small>TODO</small>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<span class="label label-success pull-right">Today</span>
+					<h5>Stocks-In</h5>
+				</div>
+				<div class="ibox-content">
+					<h1 class="no-margins">₹ 408</h1>
+
+					<div class="stat-percent font-bold text-success">
+						TODO
+						<i class="fa fa-bolt"></i>
+					</div>
+					<small>TODO</small>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<span class="label label-info pull-right">Today</span>
+					<h5>Stocks-Out</h5>
+				</div>
+				<div class="ibox-content">
+					<h1 class="no-margins">₹ 275</h1>
+
+					<div class="stat-percent font-bold text-info">
+						TODO
+						<i class="fa fa-level-up"></i>
+					</div>
+					<small>TODO</small>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-lg-6">
+			<div class="ibox">
+				<div class="ibox-title">
+					<h5>Small todo list</h5>
+					<div ibox-tools></div>
+				</div>
+				<div class="ibox-content">
+					<ul class="todo-list m-t small-list">
+						<li>
+							<checkbox ng-model="main.checkOne"></checkbox>
+							<span class="m-l-xs">Suresh: Collect payment from Bhawani General Store.</span>
+						</li>
+						<li>
+							<checkbox ng-model="check1"></checkbox>
+							<span class="m-l-xs">Order 500 Dove soap 100gm to Mahalaxmi Traders</span>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Upcoming Orders (Stock building)</h5>
+					<div ibox-tools></div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-sm-9 m-b-xs">
+							<div
+								data-toggle="buttons"
+								class="btn-group"
+							>
+								<label class="btn btn-sm btn-white">
+									<input
+										type="radio"
+										id="option1"
+										name="options"
+									>
+									Today
+								</label>
+								<label class="btn btn-sm btn-white active">
+									<input
+										type="radio"
+										id="option2"
+										name="options"
+									>
+									Tomorrow
+								</label>
+								<label class="btn btn-sm btn-white">
+									<input
+										type="radio"
+										id="option3"
+										name="options"
+									>
+									Day after Tomorrow
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="input-group">
+								<input
+									type="text"
+									placeholder="Search"
+									class="input-sm form-control"
+								>
+								<span class="input-group-btn">
+									<button
+										type="button"
+										class="btn btn-sm btn-primary"
+									>Go!</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+
+									<th>#</th>
+									<th>Product Name</th>
+									<th>Product Category</th>
+									<th>Supplier</th>
+									<th>Unit Price</th>
+									<th>Unit Ordered</th>
+									<th>Order Date</th>
+									<th>Expected Delivery Date</th>
+									<th>Actual Delivery Date</th>
+									<th>Status</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Sumo Tablet</td>
+									<td>OPS</td>
+									<td>Mehta Pharma</td>
+									<td>{{ 12.52 | currency : "₹ " : 2}}</td>
+									<td>200</td>
+									<td>21-Dec-2016</td>
+									<td>24-Dec-2016</td>
+									<td>-</td>
+									<td>Pending</td>
+									<td>
+										<a href="">
+											<i class="fa fa-check text-navy"></i>
+										</a>
+										<a href="">
+											<i class="fa fa-close text-danger"></i>
+										</a>
+									</td>
+								</tr>
+
+								<tr>
+									<td>2</td>
+									<td>Fortune Refined Oil 5 Ltr</td>
+									<td>Grocery</td>
+									<td>Bhanvar Kirana Store</td>
+									<td>{{ 590 | currency : "₹ " : 2}}</td>
+									<td>45</td>
+									<td>20-Dec-2016</td>
+									<td>21-Dec-2016</td>
+									<td>22-Dec-2016</td>
+									<td>Delivered</td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<td>3</td>
+									<td>Gowardhan Ghee 5 Ltr</td>
+									<td>Grocery</td>
+									<td>Ritesh Kirana Store</td>
+									<td>{{ 2790 | currency : "₹ " : 2}}</td>
+									<td>12</td>
+									<td>20-Dec-2016</td>
+									<td>22-Dec-2016</td>
+									<td>-</td>
+									<td>Cancelled by Me</td>
+									<td></td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,8 @@
+mysqldump -h localhost -u root -p inv > D:\inv_data.sql 
+mysqldump -d -h localhost -u root -p inv > D:\inv_schema.sql
+
+
+
+drop database inv;
+create database inv;
+use inv;

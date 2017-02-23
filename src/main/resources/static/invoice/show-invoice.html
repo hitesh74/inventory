@@ -1,0 +1,148 @@
+<div ng-controller="ShowInvoiceCtrl as showInvoiceCtrl">
+
+	<!-- Page Header -->
+	<div class="row wrapper border-bottom white-bg page-heading page-heading-parent">
+
+		<!-- Title -->
+		<div class="col-sm-4">
+			<h2>Invoice</h2>
+			<ol class="breadcrumb">
+				<li>
+					<a ui-sref="{{ showInvoiceCtrl.commonService.STATE_HOME_VIEW }}">Home</a>
+				</li>
+				<li>
+					<a ui-sref="{{ showInvoiceCtrl.commonService.STATE_INVOICE_LANDING_VIEW }}">Invoices</a>
+				</li>
+				<li class="active">
+					<strong>{{ showInvoiceCtrl.invoice.invoiceNumber }}</strong>
+				</li>
+			</ol>
+		</div>
+		<!-- !! Title -->
+
+		<!-- Sub menu items -->
+		<div class="page-heading-buttons">
+			<!-- Sub menu items for large devices -->
+			<div class="btn-group pull-right">
+
+				<a class="btn btn-default btn-sm" ng-print print-element-id="printThisElement">
+					<i class="inventory fa fa-save"></i> Print
+				</a>
+
+			</div>
+
+		</div>
+		<!-- !!Sub menu items -->
+
+	</div>
+	<!-- !! Page Header -->
+
+	<!-- Content -->
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="wrapper wrapper-content animated fadeInRight">
+					<div id="printThisElement" class="ibox-content p-xl">
+
+						<div class="row">
+							<div class="col-xs-6 text-left">
+								<h5>
+									<span class="text-navy">{{ showInvoiceCtrl.invoice.invoiceNumber }}</span>
+								</h5>
+							</div>
+
+							<div class="col-xs-6 text-right">
+								<h5 class="text-success">{{ showInvoiceCtrl.invoice.invoiceDate | date }}</h5>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-6">
+								<h5 class="text-muted">
+									<u>From:</u>
+								</h5>
+								<address>
+									<strong>Hitesh Medicals.</strong>
+									<br> 2-D-22 Talwandi, 600/10 <br> Kota, India 324005 <br>
+									<span> 9929335632</span>
+								</address>
+							</div>
+
+							<div class="col-xs-6 text-right">
+								<h5 class="text-right text-muted">
+									<u>To:</u>
+								</h5>
+								<address>
+									<strong> {{ showInvoiceCtrl.invoice.customerName }} </strong>
+									<br />
+									<strong> {{ showInvoiceCtrl.invoice.customerCityCountry }} </strong>
+									<br>
+									<strong> {{ showInvoiceCtrl.invoice.customerMobile }} </strong>
+									<br />
+								</address>
+							</div>
+						</div>
+
+						<div class="table-responsive m-t">
+							<table class="table inv-invoice-table">
+								<thead>
+									<tr>
+										<th>Item List</th>
+										<th>Quantity</th>
+										<th>Unit Price</th>
+										<th>Tax</th>
+										<th>Total Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="invoiceItem in showInvoiceCtrl.invoiceItems">
+										<td>
+											{{ invoiceItem.itemDto.productDto.name}} <br /> <small>{{ invoiceItem.itemDto.productDto.productCategoryDto.name }}</small>
+										</td>
+										<td>{{ invoiceItem.quantity }}</td>
+										<td>{{ invoiceItem.itemDto.unitSP | currency : 'INR ' : 2}}</td>
+										<td>{{ (invoiceItem.itemDto.unitSP * invoiceItem.quantity) * invoiceItem.itemDto.taxPercent / 100 | currency : 'INR ' : 2 }}</td>
+										<td>{{ (invoiceItem.itemDto.unitSP * invoiceItem.quantity) * (100 + invoiceItem.itemDto.taxPercent) / 100 | currency : 'INR ' : 2 }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- /table-responsive -->
+
+						<table class="table invoice-total">
+							<tbody>
+								<tr>
+									<td>
+										<strong>Sub Total :</strong>
+									</td>
+									<td>{{ showInvoiceCtrl.getSubTotal() | currency : 'INR ' : 2}}</td>
+								</tr>
+								<tr>
+									<td>
+										<strong>TAX :</strong>
+									</td>
+									<td>{{ showInvoiceCtrl.getTotalTax() | currency : 'INR ' : 2}}</td>
+								</tr>
+								<tr>
+									<td>
+										<strong>TOTAL :</strong>
+									</td>
+									<td>{{ showInvoiceCtrl.getTotal() | currency : 'INR ' : 2}}</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div class="well m-t">
+							<strong>Terms & Conditions</strong>
+							<ol type="1">
+								<li>Payment should be made within 15 days of purchase, thereafter interest of 24% PA will be applicable.</li>
+							</ol>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
